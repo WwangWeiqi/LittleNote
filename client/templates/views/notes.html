@@ -1,0 +1,61 @@
+<template name="note">
+    <div class="notecontainer" data-lat={{latlng.lat}} data-lng={{latlng.lng}} data-noteid={{_id}}>
+        <div class="notevalue" data-lat={{latlng.lat}} data-lng={{latlng.lng}} data-noteid={{_id}}>
+            <div>
+                <span class="notelink">
+                    <a href={{notelink}}><i class="fas fa-link"></i></a>
+                </span> 
+                <span class="noteuser">{{name}}</span>
+                <span class="notetime">{{displayDate}}</span>
+            </div>
+            <div class="noteaccount">{{address}}</div>
+            <div class="notetext" data-lat={{latlng.lat}} data-lng={{latlng.lng}} data-noteid={{_id}}>{{note}}</div>
+            <div>
+                <span class="notecoordinates" data-lat={{latlng.lat}} data-lng={{latlng.lng}} data-noteid={{_id}}>{{_ "app.Lat"}}{{latlng.lat}}   {{_ "app.Lng"}}{{latlng.lng}}</span>
+                {{#if forSell}}
+                    <span class="forsell">{{_ "app.Price"}}{{forSellInfo}} {{_ "app.Unit"}}</span>
+                {{else}}
+                    <div class="notforsell">{{notenotforsell}}</div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="notesbody">
+    {{#if TemplateVar.get "latestViewClick"}}
+        <button class="btn btn-default latestView" style="background-color: rgb(55, 197, 197);">Latest</button> 
+    {{else}}
+        <button class="btn btn-default latestView">Latest</button>
+    {{/if}}
+    
+    {{#if TemplateVar.get "hottestViewClick"}}
+        <button class="btn btn-default hottestView" style="background-color:  rgb(55, 197, 197);">Hottest</button>
+    {{else}}
+        <button class="btn btn-default hottestView">Hottest</button>
+        {{/if}}
+
+    <div class="subtitle">{{_ "app.NewNotes"}}</div>
+    <div class="rTable">
+        <div class="rTableBody">
+            {{#each notes}}
+                {{> note}}
+            {{/each}}
+        </div>
+    </div>
+</template>
+
+<template name="qrModal">
+    <div class="modal fade qrbox" style="color:black;margin-top:100px" align="center" >
+        <div>{{>qrcode text=tx size=256}}</div>
+        <br><br>
+        <input id="foo" style="width:500px" type="text" value={{contract}} readonly>
+        <button class="btn" data-clipboard-action="copy" data-clipboard-target="#foo">{{_ "app.Copy"}}</button>
+        {{clipboard}}
+        <br><br>
+        <div class="pre">{{_ "app.QRDesc"}}</div>
+        {{_ "app.GasSetting"}}
+        <br>
+        <button type="button" class="btn btn-default" data-dismiss="modal">{{_ "app.Close"}}</button>
+    </div>
+</template>

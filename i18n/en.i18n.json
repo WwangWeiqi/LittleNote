@@ -1,0 +1,20 @@
+{
+	"app":{
+		"NewNotes": "Recent Notes",
+		"Lat": "lat: ",
+		"Lng": "lng: ",
+		"Price": "Price: ",
+		"Unit": "MC",
+		"Free": "Free",
+		"Title": "MOAC LittleNote",
+		"NoJackpotInfo": "Jackpot information is not avalable now. Please wait. Thanks!",
+		"Copy":"Copy",
+		"Close":"Close",
+		"QRDesc":"QRDesc",
+		"GasSetting":"GasSetting"
+	},
+	"notice":{
+		"main_l1": "Post your note permanently on MOAC Blockchain.",
+		"main_l2": "Or, make money by selling your note space."
+	}
+}
